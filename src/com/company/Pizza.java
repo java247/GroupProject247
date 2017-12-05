@@ -2,13 +2,9 @@ import java.util.*;
 
 /*
 THE THINGS THAT WE STILL NEED
-interface
-method overriding
 stacks
-generics
 super keyword
 lists
-printf
 */
 
 
@@ -40,17 +36,16 @@ public class Pizza extends PizzaStuff{
 
         //tells customer what they orderd
         try {
-            System.out.println("===================");
-            System.out.println("Order Info");
-            System.out.println("===================");
-            System.out.println("Name: " + o1.getName());
-            System.out.println("Phone Number: " + o1.getPhoneNumber());
+            System.out.printf("===================\n");
+            System.out.printf("Order Info\n");
+            System.out.printf("===================\n");
+            System.out.println(o1.toString());
             System.out.println("Delivery type: " + deliveryOption.get(o1.getDeliveryOption()));
             System.out.println("Number of Pizzas Ordered: " + pizzasOrderd);
             System.out.println("Price of Order: " + totalCost(o1, pizzaList.get(0)));
             System.out.println("Order Number: " + id);
         }catch(IndexOutOfBoundsException e){
-            System.out.println("You ordered 0 pizzas, Have a nice day!");
+            System.out.println(error.errorText());
         }
     }
 
@@ -64,14 +59,14 @@ public class Pizza extends PizzaStuff{
         if (o1.getDeliveryOption() == 2 || o1.getDeliveryOption() == 4 ){
             //Pick-up
             for(int i = 0; i <= pizzaList.size() -1; i++){
-                totalCost += pizzaList.get(i).pizzaPrice();
+                totalCost = add(totalCost,pizzaList.get(i).pizzaPrice());
             }
         }else if (o1.getDeliveryOption() == 1 || o1.getDeliveryOption() == 3){
             //Delivery
             for(int i = 0; i <= pizzaList.size() -1; i++){
-                totalCost += pizzaList.get(i).pizzaPrice();
+                totalCost = add(totalCost, pizzaList.get(i).pizzaPrice());
             }
-            totalCost += DELIVERYCOST;
+            totalCost = add(totalCost, DELIVERYCOST);
         }else if (o1.getDeliveryOption() == 5){
             //Digiorno
             totalCost = 0.00;
