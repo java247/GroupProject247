@@ -36,4 +36,10 @@ public class OrdererInfo {
     public int getDeliveryOption(){
         return deliveryOption;
     }
+
+    //over rides the toString method to output the name and phone Number of the customer
+    @Override
+    public String toString() {
+        return "Name: " + name + "\nPhone Number: " + phoneNumber;
+    }
 }
